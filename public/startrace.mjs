@@ -1,5 +1,9 @@
 const em = {};
 
+function prepareHandles() {
+    em.timer = document.querySelector('#timer');
+}
+
 const template = document.createElement('template');
 template.innerHTML = `<div>
     <h4>
@@ -14,7 +18,7 @@ template.innerHTML = `<div>
     #marathonclock {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        color: red !important;
+        color: red;
         font-size: 3rem;
         gap: 2px;
     }
@@ -23,43 +27,45 @@ template.innerHTML = `<div>
 class Timer extends HTMLElement {
     constructor() {
         super();
-
+        this.handles = {};
         this.intervalid;
-        this.intervalidd;
-        this.intervaliddd;
         this.attachShadow({ mode: 'open' })
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
+    prepareHandles() {
+        this.handles.sec = this.shadowRoot.querySelector('#sec');
+        this.handles.min = this.shadowRoot.querySelector('#min');
+        this.handles.hour = this.shadowRoot.querySelector('#hour');
+    }
+
+    timeUnits(handles, timeout) {
+        setTimeout(() => {
+            clearInterval(this.intervalid);
+            this.intervalid = setInterval(() => {
+                handles.innerText++;
+            }, 1000)
+        }, timeout)
+    }
+
     startTimer() {
-        this.shadowRoot.querySelector('#hour').innerText = `${0}`;
-        this.shadowRoot.querySelector('#min').innerText = `${0}`;
-        this.shadowRoot.querySelector('#sec').innerText = `${0}`;
-        this.intervalid = setInterval(() => {
-            this.shadowRoot.querySelector('#sec').innerText++;
-            if (this.shadowRoot.querySelector('#sec').innerText == 3) {
-                this.intervalidd = setInterval(() => {
-                    this.shadowRoot.querySelector('#min').innerText++;
-                    if (this.shadowRoot.querySelector('#min').innerText == 3) {
-                        this.intervaliddd = setInterval(() => {
-                            this.shadowRoot.querySelector('#hour').innerText++;
-                        }, 1000);
-                    }
-                }, 1000);
-            }
-        }, 1000);
+        this.prepareHandles();
+        this.handles.sec.innerText = 0;
+        this.handles.min.innerText = 0;
+        this.handles.hour.innerText = 0;
+        this.timeUnits(this.handles.sec, 0);
+        this.timeUnits(this.handles.min, 4000);
+        this.timeUnits(this.handles.hour, 9000);
     }
 
     stopTimer() {
         clearInterval(this.intervalid);
-        clearInterval(this.intervalidd);
-        clearInterval(this.intervaliddd);
     }
 
 }
 
 function load() {
-    em.timer = document.querySelector('#timer');
+    prepareHandles();
     startTimer();
     stopTimer();
 }
