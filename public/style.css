@@ -5,7 +5,7 @@ html, body {
 }
 
 h3 {
-    font-size: large;
+    font-size: x-large;
     font-family: sans-serif;
 }
 
@@ -26,14 +26,9 @@ h3 {
 }
 
 #center {
-    align-self: center;
-}
-
-.register {
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    justify-self: center;
+    max-width: 60em;
 }
 
 .grid-col-span-2 {
@@ -51,10 +46,19 @@ input {
   border-radius: 50px;
   border: .5rem solid;
   padding: 1rem 1rem;
-  font-weight: 4rem;
-  font-size: 1.7rem;
+  font-weight: 1rem;
+  font-size: 1.5rem;
+  margin: .6rem;
 }
 
 input.active {
   background-color: #8e86ba;
+}
+
+.textInput {
+    background-color: white;
+}
+
+.center {
+    align-items: center;
 }
