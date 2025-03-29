@@ -1,20 +1,18 @@
 import * as util from './utils.js';
 
 const em = {}
+const elems = document.querySelectorAll('[id]');
 
 function prepareHandles() {
-    em.input = document.querySelector('#reg');
-    em.save = document.querySelector('#save');
-    em.start = document.querySelector('#start');
-    em.layout = document.querySelector('#layout');
-    em.template = document.querySelector('#playersaved'); 
-    em.saverunner = document.querySelector('#saverunner');
+    for (const elem of  elems) {
+        em[elem.id] = elem;
+    }
 }
 
 async function storeRunner() {
     const method = 'POST';
     const headers = { 'Content-Type': 'application/json' };
-    const body = JSON.stringify({runnerName: em.input.value});
+    const body = JSON.stringify({runnerName: em.reg.value});
     const options = { method, headers, body }
 
     const response = await fetch('runner', options);
@@ -23,8 +21,8 @@ async function storeRunner() {
         console.log('failed to save', response);
     }
 
-    if (em.input.value) {
-        em.saverunner.name = `${em.input.value}`;
+    if (em.reg.value) {
+        em.saverunner.name = `${em.reg.value}`;
     }
 }
 
