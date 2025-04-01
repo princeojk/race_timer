@@ -11,6 +11,10 @@ function prepareHandles() {
     } 
 }
 
+export function finishTime() {
+    const lap =  em.timer.currentTime();
+}
+
 function startRace() {
     em.timer.stopTimer();
     em.timer.startTimer();
@@ -21,16 +25,24 @@ function stopTimer() {
     em.timer.currentTime();
 }
 
-function finishTime() {
-    const lap = em.timer.currentTime();
-    console.log(lap);
+function setupEventListerners() {
+    util.setupButtons(em.startTimer, startRace);
+    util.setupButtons(em.stopTimer, stopTimer);
+    util.setupButtons(em.lap, finishTime);
+    util.setupButtons(completed, completeRunner);
+}
+
+// record finish time
+async function completeRunner() {
+    em.url = `runner/${em.playerID.value}`
+    const response = await fetch(em.url);
+    const value = await response.json()
+    em.saveplayer.finishLine = value.runnerName;
 }
 
 function load() {
     prepareHandles();
-    util.setupButtons(em.startTimer, startRace);
-    util.setupButtons(em.stopTimer, stopTimer);
-    util.setupButtons(em.lap, finishTime);
+    setupEventListerners();
 }
 
 document.addEventListener("DOMContentLoaded", load);
