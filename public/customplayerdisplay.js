@@ -7,17 +7,17 @@ template.innerHTML = `
 class Savedrunner extends HTMLElement {
     constructor() {
         super();
-        
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     set name(value) {
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
         this.shadowRoot.querySelector('h4').innerText = 
         `${value} saved`;
     }
 
     set finishLine(value) {
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
         this.shadowRoot.querySelector('h4').innerText = 
         `${value} reached the finish line`;
     }
