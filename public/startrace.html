@@ -6,14 +6,15 @@
     <title>RACEAPP</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" defer src="startrace.mjs"></script>
-    <script type="module" defer src="customTimer.js"></script>
+    <script type="module" defer src="customplayerdisplay.js"></script>
+    <script type="module" defer src="customclock.mjs"></script>
 </head>
 <body>
     <section id="layout">
         <section id="header">
             <h1>Race Tracker</h1>
         </section>
-        <section id="center">
+        <section id="center" class="gap">
             <section class="timersection">
                 <custom-timer id="timer"></custom-timer>
                 <input type="submit" id="stopTimer" value="Stop">
@@ -21,8 +22,16 @@
                 <input type="submit" id="lap" value="Lap">
             </section>
             <section class="recordfinish">
-                <input type="text" id="playerID" class="textInput" placeholder="Enter runners ID">
+                <section>
+                    <p>Player ID</p>
+                    <input type="number" id="playerID" class="textInput" placeholder="Enter runners ID">
+                </section>
+                <section>
+                    <p>Runners position</p>
+                    <input type="number" id="positionID" class="textInput" placeholder="Enter position">
+                </section>
                 <input type="submit" id="completed" value="Finished">
+                <saved-runner id="saveplayer"></saved-runner>
             </section>
         </section>
         <section id="footer">item 3</section>
