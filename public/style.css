@@ -62,3 +62,7 @@ input.active {
 .center {
     align-items: center;
 }
+
+.gap {
+    gap: 4rem;
+}
