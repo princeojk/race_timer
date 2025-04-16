@@ -1,4 +1,4 @@
-import * as util from './utils.js';
+import * as util from './utils.mjs';
 
 const em = {}
 const elems = document.querySelectorAll('[id]');
@@ -21,8 +21,9 @@ async function storeRunner() {
         console.log('failed to save', response);
     }
 
+    // displays last saved player on client
     if (em.reg.value) {
-        em.saverunner.name = `${em.reg.value}`;
+        saverunner.name = em.reg.value;
     }
 }
 
@@ -37,27 +38,5 @@ function recordRunner() {
     prepareHandles();
     addEventListeners();
 }
-
-const template = document.createElement('template');
-template.innerHTML = `
-<div>
-    <h4 style= "color: red"></h4>
-</div>`
-
-class Savedrunner extends HTMLElement {
-    constructor() {
-        super();
-        
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-    }
-
-    set name(value) {
-        this.shadowRoot.querySelector('h4').innerText = 
-        `${value} saved`;
-    }
-}
-
-window.customElements.define('saved-runner', Savedrunner);
 
 document.addEventListener("DOMContentLoaded", recordRunner);
