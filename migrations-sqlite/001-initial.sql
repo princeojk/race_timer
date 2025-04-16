@@ -1,15 +1,13 @@
 -- Up
-
 CREATE TABLE Runners (
-    id INTEGER PRIMARY KEY,
+    runner_id INTEGER PRIMARY KEY,
     runnerName TEXT NOT NULL,
+    position_id INTEGER,
     time DATETIME
 );
 
-INSERT INTO Runners (runnername, time) VALUES
-(   'John Paul',
-    datetime('now'))
+INSERT INTO Runners (runnerName, time) VALUES
+('John Paul', datetime('now'));
 
 -- Down
-
 DROP TABLE Runners;
