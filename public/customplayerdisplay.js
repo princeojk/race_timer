@@ -20,6 +20,14 @@ class Savedrunner extends HTMLElement {
         this.shadowRoot.querySelector('h4').innerText = 
         `${playerName} finished ${position}`;
     }
+
+    timerWarning() {
+        this.shadowRoot.querySelector(`h4`).innerText = `timer still active`
+    }
+
+    currentTime(time) {
+        this.shadowRoot.querySelector(`h4`).innerText = time;
+    }
 }
 
 window.customElements.define('saved-runner', Savedrunner);
