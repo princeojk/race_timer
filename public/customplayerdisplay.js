@@ -4,7 +4,7 @@ template.innerHTML = `
     <h4 style= "color: red"></h4>
 </div>`
 
-class Savedrunner extends HTMLElement {
+export class Displayprompts extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -30,4 +30,4 @@ class Savedrunner extends HTMLElement {
     }
 }
 
-window.customElements.define('saved-runner', Savedrunner);
+window.customElements.define('custom-display', Displayprompts);
