@@ -20,9 +20,8 @@ export async function listRunners() {
 
 export async function addRunners(runnerName) {
     const db = await dbConn;
-    const time = new Date().toISOString();
-    await db.run('INSERT INTO Runners (runnerName, time) VALUES (?, ?)', 
-        [runnerName, time]);
+    await db.run('INSERT INTO Runners (runnerName) VALUES (?)', 
+        [runnerName]);
     return listRunners();
 };
 
@@ -50,12 +49,18 @@ export async function getPlayerPosition(runner_id) {
     return result;
 };
 
-export async function finishLine(position_id, runner_id) {
+export async function finishLine(position_id, runner_id, runnerTime) {
     const db = await dbConn;
-    await db.run(`UPDATE Runners SET position_id = ? WHERE runner_id = ?`, 
-        [position_id, runner_id]);
+    await db.run(`UPDATE Runners SET position_id = ?, finish_time = ? WHERE runner_id = ?`, 
+        [position_id, runnerTime, runner_id]);
     return getPlayerPosition(runner_id);
-};
+
+export async function leaderBoard() {
+    const db = await dbConn;
+    const results = await db.all(`SELECT position_id, runner_id, runnerName, finish_time 
+        FROM Runners ORDER BY 1`);
+    return results;
+}
 
 async function rollBack() {
     const db = await dbConn;
