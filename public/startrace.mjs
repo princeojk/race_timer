@@ -3,8 +3,8 @@ import * as util from './utils.mjs';
 const em = {};
 
 function prepareHandles() {
-    em.timerSection = document.querySelector('#center');
-    const timeButtons = em.timerSection.querySelectorAll('[id]');
+    em.center = document.querySelector('#center');
+    const timeButtons = em.center.querySelectorAll('[id]');
     for (const button of timeButtons) {
         em[button.id] = button;
     } 
@@ -13,12 +13,15 @@ function prepareHandles() {
 function setupEventListerners() {
     util.setupButtons(em.startTimer, startRace);
     util.setupButtons(em.stopTimer, stopTimer);
-    util.setupButtons(em.lap, finishTime);
+    util.setupButtons(em.lap, displayLapTime);
     util.setupButtons(completed, leaderBoard);
+    util.setupButtons(em.results, results);
 }
 
-export function finishTime() {
-    return em.timer.currentTime();
+function displayLapTime() {
+    const { hour, min, sec } = em.timer.currentTime()
+    const finishTime = `${hour} : ${min} : ${sec}`;
+    lapTime.currentTime(finishTime);
 }
 
 function startRace() {
@@ -28,7 +31,6 @@ function startRace() {
 
 function stopTimer() {
     em.timer.stopTimer();
-    em.timer.currentTime();
 }
 
 async function retrieveRunner() {
@@ -40,19 +42,29 @@ async function retrieveRunner() {
 // record finish time
 async function leaderBoard() {
     const value = await retrieveRunner();
+    const { hour, min, sec } = em.timer.currentTime()
+    const finishTime = `${hour} : ${min} : ${sec}`;
+
     const method = 'POST';
     const headers = { 'Content-Type': 'application/json' };
     const body = JSON.stringify({
         runnerId: value.runner_id,
-        positionId: em.positionID.value
+        positionId: em.positionID.value,
+        runnerTime: finishTime
     });
     const options = { method, headers, body }
 
     const response = await fetch('leaderBoard', options);
     const {runnerName, position_id} = await response.json();
+
     saveplayer.setFinishLine(runnerName, position_id);
 }
 
+function results() {
+    if (em.timer.checkClockActive()) {
+        saveplayer.timerWarning();
+    };
+} 
 
 function load() {
     prepareHandles();
