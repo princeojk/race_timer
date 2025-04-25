@@ -17,9 +17,10 @@
         <section id="center" class="gap">
             <section class="timersection">
                 <custom-timer id="timer"></custom-timer>
-                <input type="submit" id="stopTimer" value="Stop">
                 <input type="submit" id="startTimer" value="Start">
                 <input type="submit" id="lap" value="Lap">
+                <input type="submit" id="stopTimer" value="End race">
+                <custom-display id="lapTime"></custom-display>
             </section>
             <section class="recordfinish">
                 <section>
@@ -30,8 +31,9 @@
                     <p>Runners position</p>
                     <input type="number" id="positionID" class="textInput" placeholder="Enter position">
                 </section>
-                <input type="submit" id="completed" value="Finished">
-                <saved-runner id="saveplayer"></saved-runner>
+                <input type="submit" id="completed" value="Submit">
+                <input type="submit" id="results" value="Results">
+                <custom-display id="saveplayer"></custom-display>
             </section>
         </section>
         <section id="footer">item 3</section>
