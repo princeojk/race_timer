@@ -39,12 +39,25 @@ async function editRunner(req, res) {
     res.json(runner);
 }
 
+async function savePosition(req, res) {
+    const { positionId, runnerId, runnerTime } = req.body;
+    const result =  await db.finishLine(positionId, runnerId, runnerTime);
+    res.json(result);
+}
+
+async function results(req, res) {
+    const results = await db.leaderBoard();
+    res.json(results);
+}
+
 app.post('/runner', saveRunner);
 app.put('/runner/:id', editRunner); // change runner details
 app.delete('/runner/:id', delRunner);
 app.get('/runner', getRunners);
 app.get('/runner/:id', getRunner);
+app.post('/leaderBoard', savePosition);
+app.get('/leaderBoard', results);
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
