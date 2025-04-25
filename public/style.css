@@ -41,14 +41,14 @@ h3 {
 }
 
 input {
-  background-color: rgb(65, 65, 212);
-  color:black;
-  border-radius: 50px;
-  border: .5rem solid;
-  padding: 1rem 1rem;
-  font-weight: 1rem;
-  font-size: 1.5rem;
-  margin: .6rem;
+    background-color: rgb(65, 65, 212);
+    color:black;
+    border-radius: 50px;
+    border: .5rem solid;
+    padding: .5rem .5rem;
+    font-weight: 1rem;
+    font-size: 1.2rem;
+    margin: .6rem;
 }
 
 input.active {
