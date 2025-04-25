@@ -54,6 +54,7 @@ export async function finishLine(position_id, runner_id, runnerTime) {
     await db.run(`UPDATE Runners SET position_id = ?, finish_time = ? WHERE runner_id = ?`, 
         [position_id, runnerTime, runner_id]);
     return getPlayerPosition(runner_id);
+};
 
 export async function leaderBoard() {
     const db = await dbConn;
