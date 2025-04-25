@@ -55,6 +55,9 @@ export class Timer extends HTMLElement {
     setHour() {
         this.intvalIds.hourID = setInterval(() => {
             this.hdl.hour.innerText++;
+            clearInterval(this.intvalIds.minID);
+            this.hdl.min.innerText = 0;
+            this.setMin();
         }, 120000)
     }
 
