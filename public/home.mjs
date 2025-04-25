@@ -1,4 +1,4 @@
-import * as util from './utils.js';
+import * as util from './utils.mjs';
 
 const em = {}
 
