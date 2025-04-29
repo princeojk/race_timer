@@ -10,6 +10,7 @@ async function init() {
     await db.migrate({ migrationsPath: './migrations-sqlite' });
     return db;
 };
+
 const dbConn = init();
 
 export async function listRunners() {
