@@ -35,13 +35,6 @@ export async function delRunner(runner_id) {
     await db.run('DELETE FROM Runners WHERE runner_id = ?', runner_id);
 };
 
-export async function editRunner(runner_id, updatedName) {
-    const db = await dbConn;
-    await db.run('UPDATE Runners SET runnerName = ? WHERE runner_id = ?', 
-        [updatedName, runner_id]);
-    return findRunner(id);
-};
-
 export async function getPlayerPosition(runner_id) {
     const db = await dbConn;
     const result = await db.get(

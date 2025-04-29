@@ -33,12 +33,6 @@ async function delRunner(req, res) {
     res.json(runner);
 }
 
-async function editRunner(req, res) {
-    const { runnerName } = req.body;
-    const runner = await db.editRunner(req.params.id, runnerName);
-    res.json(runner);
-}
-
 async function savePosition(req, res) {
     const { positionId, runnerId, runnerTime } = req.body;
     const result =  await db.finishLine(positionId, runnerId, runnerTime);
@@ -51,7 +45,6 @@ async function results(req, res) {
 }
 
 app.post('/runner', saveRunner);
-app.put('/runner/:id', editRunner); // change runner details
 app.delete('/runner/:id', delRunner);
 app.get('/runner', getRunners);
 app.get('/runner/:id', getRunner);
