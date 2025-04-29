@@ -64,6 +64,7 @@ function results() {
     if (em.timer.checkClockActive()) {
         saveplayer.timerWarning();
     };
+    window.location.href = `./results.html`;
 } 
 
 function load() {
