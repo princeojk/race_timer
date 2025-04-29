@@ -3,5 +3,5 @@ eslint.config.js
 .vscode
 .env
 .DS_Store
-database.sqlite
 .env
+database.sqlite
