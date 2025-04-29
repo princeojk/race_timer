@@ -66,3 +66,14 @@ input.active {
 .gap {
     gap: 2rem;
 }
+
+th {
+    padding: 0.4rem 0.4rem; 
+    text-align: left;  
+}
+
+td {
+    padding: .4rem .4rem; 
+    text-align: left;  
+    overflow: scroll; 
+}
