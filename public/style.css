@@ -9,7 +9,7 @@ h3 {
     font-family: sans-serif;
 }
 
-#layout {
+body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 
@@ -20,12 +20,12 @@ h3 {
     text-align: center;  
 }
 
-#header {
+header {
     background-color: rgb(94, 138, 203);
     font-size: 1.2rem;
 }
 
-#center {
+main {
     display: grid;
     justify-self: center;
     max-width: 60em;
@@ -35,7 +35,7 @@ h3 {
     grid-column: span 2;
 }
 
-#footer {
+footer {
     background-color:  rgb(94, 138, 203);
     font-size: 1rem;
 }
@@ -54,7 +54,9 @@ input {
 input.active {
   background-color: #8e86ba;
 }
-
+input#del {
+    background-color: red;
+}
 .textInput {
     background-color: white;
 }
