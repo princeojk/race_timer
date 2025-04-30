@@ -3,7 +3,7 @@ import * as util from './utils.mjs';
 const em = {};
 
 function prepareHandles() {
-    em.center = document.querySelector('#center');
+    em.center = document.querySelector('main');
     const timeButtons = em.center.querySelectorAll('[id]');
     for (const button of timeButtons) {
         em[button.id] = button;
