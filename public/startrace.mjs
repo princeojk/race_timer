@@ -3,9 +3,9 @@ import * as util from './utils.mjs';
 const em = {};
 
 function prepareHandles() {
-    em.center = document.querySelector('main');
-    const timeButtons = em.center.querySelectorAll('[id]');
-    for (const button of timeButtons) {
+    em.main = document.querySelector('main');
+    const timerPage = em.main.querySelectorAll('[id]');
+    for (const button of timerPage) {
         em[button.id] = button;
     } 
 }
