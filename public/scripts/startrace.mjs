@@ -1,4 +1,4 @@
-import * as util from './utils.mjs';
+import * as util from '../utils.mjs';
 
 const em = {};
 
@@ -34,7 +34,7 @@ function stopTimer() {
 }
 
 async function retrieveRunner() {
-    const getSavedRunner = await fetch(`runner/${em.playerID.value}`);
+    const getSavedRunner = await fetch(`../runner/${em.playerID.value}`);
     const value = await getSavedRunner.json();
     return value;
 }
@@ -54,7 +54,7 @@ async function leaderBoard() {
     });
     const options = { method, headers, body }
 
-    const response = await fetch('leaderBoard', options);
+    const response = await fetch('../leaderBoard', options);
     const {runnerName, position_id} = await response.json();
 
     saveplayer.setFinishLine(runnerName, position_id);

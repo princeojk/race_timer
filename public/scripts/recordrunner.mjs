@@ -1,4 +1,4 @@
-import * as util from './utils.mjs';
+import * as util from '../utils.mjs';
 
 const em = {}
 const elems = document.querySelectorAll('[id]');
@@ -15,22 +15,28 @@ async function storeRunner() {
     const body = JSON.stringify({runnerName: em.reg.value});
     const options = { method, headers, body }
 
-    const response = await fetch('runner', options);
+    const response = await fetch('../runner', options);
 
     if (!response.ok) {
-        console.log('failed to save', response);
-    }
-
-    // displays last saved player on client
-    if (em.reg.value) {
-        saverunner.name = em.reg.value;
+        saverunner.name = `${em.reg.value} not saved`; // displays not saved on client
+    } else {
+        saverunner.name = `${em.reg.value} saved`;
     }
 }
 
 async  function deleteRunner() {
-    await fetch(`runner/${em.delete.value}`, {
+    const response = await fetch(`../runner/${em.delete.value}`, {
         method: 'DELETE',
     }) 
+
+    const data = await response.json(); 
+
+    // displays play last deleted / attempt
+    if (!response.ok) {
+        data.name = `${runnerName.runnerName} not deleted`;
+    } else {
+        data.name = `${runnerName.runnerName} deleted`;
+    }
 }
 
 function addEventListeners() {

@@ -1,4 +1,4 @@
-import * as util from './utils.mjs';
+import * as util from '../utils.mjs';
 
 const ui = {}
 

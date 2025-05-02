@@ -1,5 +1,5 @@
 async function showResults() {
-    const results = await fetch('/leaderBoard');
+    const results = await fetch('../leaderBoard');
     const positions = await results.json();
 
     const table = document.querySelector(`#lists`);

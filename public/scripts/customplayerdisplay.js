@@ -13,7 +13,7 @@ export class Displayprompts extends HTMLElement {
 
     set name(value) {
         this.shadowRoot.querySelector('h4').innerText = 
-        `${value} saved`;
+        `${value}`;
     }
 
     setFinishLine(playerName, position) {
