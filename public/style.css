@@ -54,9 +54,7 @@ input {
 input.active {
   background-color: #8e86ba;
 }
-input#del {
-    background-color: red;
-}
+
 .textInput {
     background-color: white;
 }
