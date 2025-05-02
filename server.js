@@ -28,8 +28,10 @@ async function getRunner(req, res) {
 }
 
 async function delRunner(req, res) {
-    const runner = await db.delRunner(req.params.id);
-    
+    const delRunner = await db.delRunner(req.params.id);
+    if (delRunner.changes != 1) {
+        res.status(404).send('No match for that ID.');
+    };
     res.json(runner);
 }
 
