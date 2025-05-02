@@ -27,11 +27,18 @@ async function storeRunner() {
     }
 }
 
+async  function deleteRunner() {
+    await fetch(`runner/${em.delete.value}`, {
+        method: 'DELETE',
+    }) 
+}
+
 function addEventListeners() {
     util.setupButtons(em.save, storeRunner);
     util.setupButtons(em.start, () => {
         window.location.href = `./startrace.html`;
     });
+    util.setupButtons(em.del, deleteRunner);
 }
 
 function recordRunner() {
