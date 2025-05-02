@@ -29,10 +29,10 @@ async function getRunner(req, res) {
 
 async function delRunner(req, res) {
     const delRunner = await db.delRunner(req.params.id);
-    if (delRunner.changes != 1) {
+    if (!delRunner) {
         res.status(404).send('No match for that ID.');
     };
-    res.json(runner);
+    res.json(delRunner);
 }
 
 async function savePosition(req, res) {
