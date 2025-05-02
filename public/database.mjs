@@ -32,7 +32,8 @@ export async function findRunner(runner_id) {
 
 export async function delRunner(runner_id) {
     const db = await dbConn;
-    await db.run('DELETE FROM Runners WHERE runner_id = ?', runner_id);
+    const result = await db.run('DELETE FROM Runners WHERE runner_id = ?', runner_id);
+    return result;
 };
 
 export async function getPlayerPosition(runner_id) {
