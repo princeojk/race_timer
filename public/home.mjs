@@ -1,13 +1,13 @@
 import * as util from './utils.mjs';
 
-const em = {}
+const ui = {}
 
 function prepareHandles() {
-    em.createRace = document.querySelector('#send');
+    ui.createRace = document.querySelector('#send');
 }
 
 function addEventListeners() {
-    util.setupButtons(em.createRace, () => {
+    util.setupButtons(ui.createRace, () => {
         window.location.href = `./recordrunner.html`;
     })
 }
