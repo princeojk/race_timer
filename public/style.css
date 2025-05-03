@@ -41,7 +41,7 @@ footer {
 }
 
 input {
-    background-color: rgb(65, 65, 212);
+    background-color: rgb(76, 76, 204);
     color:black;
     border-radius: 50px;
     border: .5rem solid;
@@ -53,7 +53,9 @@ input {
 
 input.active {
   background-color: #8e86ba;
+  border-color: rgb(107, 102, 102);
 }
+
 
 .textInput {
     background-color: white;
