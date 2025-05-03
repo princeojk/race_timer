@@ -18,24 +18,27 @@ async function storeRunner() {
     const response = await fetch('../runner', options);
 
     if (!response.ok) {
-        saverunner.name = `${em.reg.value} not saved`; // displays not saved on client
+        displayevent.name = `${em.reg.value} not saved`; // displays not saved on client
     } else {
-        saverunner.name = `${em.reg.value} saved`;
+        displayevent.name = `${em.reg.value} saved`;
     }
 }
 
 async  function deleteRunner() {
-    const response = await fetch(`../runner/${em.delete.value}`, {
+     if (isNaN(em.reg.value)) {
+        displayevent.name = `Enter runners ID to delete`
+        return; 
+    }
+
+    const response = await fetch(`../runner/${em.reg.value}`, {
         method: 'DELETE',
     }) 
 
     const data = await response.json(); 
 
-    // displays play last deleted / attempt
-    if (!response.ok) {
-        data.name = `${runnerName.runnerName} not deleted`;
-    } else {
-        data.name = `${runnerName.runnerName} deleted`;
+    // displays play last deleted
+    if (response.ok) {
+        displayevent.name = `${data.runnerName} deleted`;
     }
 }
 
