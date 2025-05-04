@@ -48,7 +48,7 @@ export class Timer extends HTMLElement {
             clearInterval(this.intvalIds.secID);
             this.hdl.sec.innerText = 0;
             this.setSec();
-        }, 6000)
+        }, 60000)
 
     }
 
@@ -58,7 +58,7 @@ export class Timer extends HTMLElement {
             clearInterval(this.intvalIds.minID);
             this.hdl.min.innerText = 0;
             this.setMin();
-        }, 120000)
+        }, 3600000)
     }
 
     startTimer() {
