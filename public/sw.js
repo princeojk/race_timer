@@ -5,13 +5,18 @@ function interceptFetch(evt) {
     evt.respondWith(handleFetch(evt.request));
     evt.waitUntil(updateCache(evt.request));
   }
-  
-  /* Retrieve a requested resource from the cache
-   * or return a resolved promise if its not there. */
+
   async function handleFetch(request) {
-    const c = await caches.open(CACHE);
-    const cachedCopy = await c.match(request);
-    return cachedCopy || Promise.reject(new Error('no-match'));
+    try {
+      const networkResponse = await fetch(request);
+      const cache = await caches.open(CACHE);
+      cache.put(request, networkResponse.clone()); // Update cache
+      return networkResponse;
+    } catch (err) {
+      const cache = await caches.open(CACHE);
+      const cachedResponse = await cache.match(request);
+      return cachedResponse || Response.error(); // Or a fallback response
+    }
   }
   
   /* Invoke the default fetch capability to
@@ -30,24 +35,22 @@ function interceptFetch(evt) {
   /* List of files to cache */
   const CACHEABLE = [
     './',
-    './customclock.mjs',
-    './sw.js',
+    './scripts/customclock.mjs',
     './utils.mjs',
     './main.mjs',
     './style.css',
-    './recordrunner.mjs',
-    './recordRunner.html',
-    './home.html',
-    './home.mjs',
-    './customplayerdisplay.js',
-    './startrace.html',
+    './scripts/recordrunner.mjs',
+    './screens/recordRunner.html',
+    './screens/home.html',
+    './scripts/home.mjs',
+    './scripts/customplayerdisplay.js',
+    './screens/startrace.html',
     './startrace.mjs',
-    './database.mjs'
+    './database.mjs',
+    './scripts/results.mjs'
   ];
-		
-// 	results.html
-// 		results.mjs		
 
+  
   /* Prepare and populate the cache. */
   async function prepareCache() {
     const c = await caches.open(CACHE);
