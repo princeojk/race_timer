@@ -11,9 +11,10 @@ export class Displayprompts extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    set name(value) {
+    saveEvent(value) {
         this.shadowRoot.querySelector('h4').innerText = 
         `${value}`;
+        console.log(value);
     }
 
     setFinishLine(playerName, position) {

@@ -15,22 +15,20 @@ async function storeRunner() {
     const body = JSON.stringify({runnerName: em.reg.value});
     const options = { method, headers, body }
 
-    const response = await fetch('../runner', options);
+    const response = await fetch('/runner', options);
 
-    if (!response.ok) {
-        displayevent.name = `${em.reg.value} not saved`; // displays not saved on client
-    } else {
-        displayevent.name = `${em.reg.value} saved`;
+    if (response.ok) {
+        displayevent.saveEvent(`${em.reg.value} saved`);
     }
 }
 
 async  function deleteRunner() {
      if (isNaN(em.reg.value)) {
-        displayevent.name = `Enter runners ID to delete`
-        return; 
+        displayevent.saveEvent(`Enter runners ID to delete`);
+        return; // stops delete event if not a valid runners ID
     }
 
-    const response = await fetch(`../runner/${em.reg.value}`, {
+    const response = await fetch(`/runner/${em.reg.value}`, {
         method: 'DELETE',
     }) 
 
@@ -38,7 +36,7 @@ async  function deleteRunner() {
 
     // displays play last deleted
     if (response.ok) {
-        displayevent.name = `${data.runnerName} deleted`;
+        displayevent.saveEvent(`${data.runnerName} deleted`);
     }
 }
 
