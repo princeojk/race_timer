@@ -1,11 +1,17 @@
 import 'dotenv/config';
 import express from 'express';
 import * as db from './public/database.mjs';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 const app = express();
 const port = process.env.PORT;
 
-app.use(express.static('public'));
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+app.use(express.static(path.join(dirname, 'public')));
+app.use(express.static(path.join(dirname, 'public', 'screens')));
 app.use(express.json());
 
 async function saveRunner(req, res) {
@@ -45,6 +51,10 @@ async function results(req, res) {
     const results = await db.leaderBoard();
     res.json(results);
 }
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(dirname, 'public', 'screens', 'home.html'))
+})
 
 app.post('/runner', saveRunner);
 app.delete('/runner/:id', delRunner);
