@@ -61,9 +61,12 @@ async function leaderBoard() {
 }
 
 function results() {
+    // stops users from going to results if the timer is active
     if (em.timer.checkClockActive()) {
-        saveplayer.timerWarning();
+        saveplayer.timerWarning(); 
+        return;
     };
+
     window.location.href = `./results.html`;
 } 
 

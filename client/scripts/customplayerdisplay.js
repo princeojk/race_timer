@@ -22,7 +22,7 @@ export class Displayprompts extends HTMLElement {
     }
 
     timerWarning() {
-        this.shadowRoot.querySelector(`h4`).innerText = `timer still active`
+        this.shadowRoot.querySelector(`h4`).innerText = `End race to view results`
     }
 
     currentTime(time) {
