@@ -20,6 +20,7 @@ function createHeader(positions, table) {
     table.appendChild(tr);
 } 
 
+// displays results of race as well as IDs of each runner 
 function tableRows(positions, table) {
     const values = Object.values(positions);
     for (const runnerAttr of values) {

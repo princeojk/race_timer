@@ -28,7 +28,6 @@ header {
 main {
     display: grid;
     justify-self: center;
-    max-width: 60em;
 }
 
 .grid-col-span-2 {
@@ -49,7 +48,7 @@ input {
     font-weight: 100;
     font-size: 1.2rem;
     margin: .6rem;
-    transition: all 0.6s;
+    transition: all 0.1s;
 }
 
 input.active {
@@ -79,4 +78,15 @@ td {
     padding: .4rem .4rem; 
     text-align: left;  
     overflow: scroll; 
+}
+
+.fullwidth {
+    justify-self: stretch; 
+    width: 100%;
+}
+
+.scroll {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
 }

@@ -14,7 +14,6 @@ export class Displayprompts extends HTMLElement {
     saveEvent(value) {
         this.shadowRoot.querySelector('h4').innerText = 
         `${value}`;
-        console.log(value);
     }
 
     setFinishLine(playerName, position) {
