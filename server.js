@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import * as db from './public/database.mjs';
+import * as db from './client/database.mjs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -10,8 +10,8 @@ const port = process.env.PORT;
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-app.use(express.static(path.join(dirname, 'public')));
-app.use(express.static(path.join(dirname, 'public', 'screens')));
+app.use(express.static(path.join(dirname, 'client')));
+app.use(express.static(path.join(dirname, 'client', 'screens')));
 app.use(express.json());
 
 async function saveRunner(req, res) {
@@ -53,7 +53,7 @@ async function results(req, res) {
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(dirname, 'public', 'screens', 'home.html'))
+    res.sendFile(path.join(dirname, 'client', 'screens', 'home.html'))
 })
 
 app.post('/runner', saveRunner);
