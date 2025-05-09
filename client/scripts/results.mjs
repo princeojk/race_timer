@@ -1,28 +1,29 @@
 async function showResults() {
-    const results = await fetch('../leaderBoard');
+    const results = await fetch('/leaderBoard');
     const positions = await results.json();
 
-    const table = document.querySelector(`#lists`);
+    const table = document.querySelector(`table`);
 
-    createHeader(positions, table);
-    tableRows(positions, table)
-
+    populateTableHeaders(positions, table);
+    populateTableRows(positions, table);
 }
 
-function createHeader(positions, table) {
-    const headers = Object.keys(positions[0]);
+function populateTableHeaders(data, table) {
+    const thead = table.createTHead()
+    const headers = Object.keys(data[0]);
     const tr = document.createElement('tr');
-    for (const hs of headers) {
+    for (const title of headers) {
         const th = document.createElement('th');
-        th.textContent = hs;
+        th.textContent = title;
         tr.appendChild(th);
     }
-    table.appendChild(tr);
+    thead.appendChild(tr);
 } 
 
 // displays results of race as well as IDs of each runner 
-function tableRows(positions, table) {
-    const values = Object.values(positions);
+function populateTableRows(data, table) {
+    const tBody = table.createTBody()
+    const values = Object.values(data);
     for (const runnerAttr of values) {
         const tr = document.createElement('tr');
        Object.values(runnerAttr).forEach((value) => {
@@ -30,7 +31,7 @@ function tableRows(positions, table) {
         td.textContent = value;
         tr.appendChild(td);
        });
-       table.appendChild(tr);
+       tBody.appendChild(tr);
     }
 }
 
