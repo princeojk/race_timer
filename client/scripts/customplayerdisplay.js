@@ -11,7 +11,10 @@ export class Displayprompts extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
+<<<<<<< HEAD
     // diplays save or delete related events
+=======
+>>>>>>> 13c33a7a2fff1a3d9e61edbe2d4b3171f944a61d
     saveEvent(value) {
         this.shadowRoot.querySelector('h4').innerText = 
         `${value}`;
