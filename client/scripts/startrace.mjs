@@ -34,11 +34,7 @@ function stopTimer() {
 }
 
 async function retrieveRunner() {
-<<<<<<< HEAD
     const getSavedRunner = await fetch(`/runner/${em.playerID.value}`);
-=======
-    const getSavedRunner = await fetch(`../runner/${em.playerID.value}`);
->>>>>>> 13c33a7a2fff1a3d9e61edbe2d4b3171f944a61d
     const value = await getSavedRunner.json();
     return value;
 }
@@ -56,13 +52,9 @@ async function leaderBoard() {
         positionId: em.positionID.value,
         runnerTime: finishTime
     });
-    const options = { method, headers, body }
 
-<<<<<<< HEAD
+    const options = { method, headers, body }
     const response = await fetch('/leaderBoard', options);
-=======
-    const response = await fetch('../leaderBoard', options);
->>>>>>> 13c33a7a2fff1a3d9e61edbe2d4b3171f944a61d
     const {runnerName, position_id} = await response.json();
 
     saveplayer.setFinishLine(runnerName, position_id);

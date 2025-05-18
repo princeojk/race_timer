@@ -38,11 +38,7 @@ export async function findRunner(runner_id) {
 export async function delRunner(runner_id) {
     const db = await dbConn;
     const runner = await findRunner(runner_id);
-<<<<<<<< HEAD:src/database.mjs
     await db.run('DELETE FROM runners WHERE runner_id = ?', runner_id);
-========
-    await db.run('DELETE FROM Runners WHERE runner_id = ?', runner_id);
->>>>>>>> 13c33a7a2fff1a3d9e61edbe2d4b3171f944a61d:client/database.mjs
     return runner;
 };
 

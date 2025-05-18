@@ -18,11 +18,8 @@ async function storeRunner() {
     const response = await fetch('/runner', options);
 
     if (response.ok) {
-<<<<<<< HEAD
         displayevent.saveEvent(`${em.reg.value} saved`); // displays name of last player saved
-=======
-        displayevent.saveEvent(`${em.reg.value} saved`);
->>>>>>> 13c33a7a2fff1a3d9e61edbe2d4b3171f944a61d
+
     }
 }
 
