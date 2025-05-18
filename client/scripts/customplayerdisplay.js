@@ -11,18 +11,21 @@ export class Displayprompts extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    set name(value) {
+    // diplays save or delete related events
+    saveEvent(value) {
         this.shadowRoot.querySelector('h4').innerText = 
-        `${value} saved`;
+        `${value}`;
     }
 
+    //displays the player name and position of completed marathon runners
     setFinishLine(playerName, position) {
         this.shadowRoot.querySelector('h4').innerText = 
         `${playerName} finished ${position}`;
     }
 
+    // displays warning if the timer is active
     timerWarning() {
-        this.shadowRoot.querySelector(`h4`).innerText = `timer still active`
+        this.shadowRoot.querySelector(`h4`).innerText = `End race to view results`
     }
 
     currentTime(time) {

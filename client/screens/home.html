@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang = "en">
+<meta charset = "UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RACEAPP</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<script type="module" defer src="/scripts/home.mjs"></script>
+<script type="module" defer src="/scripts/customplayerdisplay.js"></script>
+<script type="module" defer src="/main.mjs"></script>
+
+<header>
+    <h1>Race Tracker</h1>
+</header>
+
+<main class="center">
+    <section>
+        <input type="submit" id="create" value="Create race">
+    </section>
+    <section>
+        <input type="submit" id="results" value="view results">
+        <input type="submit" id="clear" value="clear results">
+        <custom-display id="display" class="grid-col-span-2"></custom-display>
+    </section>
+</main>
+
+<footer>2025 MarathonTracker •</footer>
+</html>

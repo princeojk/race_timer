@@ -1,3 +1,8 @@
+:root {
+    --pad: 0.4rem;
+    --font: 1rem
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -12,23 +17,17 @@ h3 {
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
-        "header"
-        "center"
-        "footer";
-    height: 100%; 
     text-align: center;  
 }
 
 header {
     background-color: rgb(94, 138, 203);
-    font-size: 1.2rem;
+    font-size: var(--font);
 }
 
 main {
     display: grid;
     justify-self: center;
-    max-width: 60em;
 }
 
 .grid-col-span-2 {
@@ -37,26 +36,27 @@ main {
 
 footer {
     background-color:  rgb(94, 138, 203);
-    font-size: 1rem;
+    font-size: var(--font);
 }
 
 input {
-    background-color: rgb(65, 65, 212);
+    background-color: rgb(76, 76, 204);
     color:black;
     border-radius: 50px;
-    border: .5rem solid;
-    padding: .5rem .5rem;
-    font-weight: 1rem;
-    font-size: 1.2rem;
-    margin: .6rem;
+    border: var(--pad) solid black;;
+    padding: var(--pad) var(--pad);
+    font-weight: 100;
+    font-size: var(--font);
+    margin: var(--pad);
+    transition: all 0.1s;
 }
 
 input.active {
   background-color: #8e86ba;
+  border-color: rgb(107, 102, 102);
 }
-input#del {
-    background-color: red;
-}
+
+
 .textInput {
     background-color: white;
 }
@@ -70,12 +70,17 @@ input#del {
 }
 
 th {
-    padding: 0.4rem 0.4rem; 
+    padding: var(--pad) var(--pad); 
     text-align: left;  
 }
 
 td {
-    padding: .4rem .4rem; 
+    padding: var(--pad) var(--pad); 
     text-align: left;  
-    overflow: scroll; 
+}
+
+.table-scroll {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
 }
