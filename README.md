@@ -13,7 +13,7 @@ Features
 
 Tech Stack
 - Frontend: Javascript
-- Backend: Node.js 
+- Backend: Express 
 - Database: sqlite 
 - Styling: CSS 
 - Version Control: Git & GitHub
