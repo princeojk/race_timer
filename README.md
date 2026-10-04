@@ -16,4 +16,3 @@ Tech Stack
 - Backend: Express 
 - Database: sqlite 
 - Styling: CSS 
-- Version Control: Git & GitHub
